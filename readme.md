@@ -1,8 +1,8 @@
-## Given a number of airports connections with the time duration between them find the route that pass through all airports in the shortest time possible (returns to the same airport are excluded).
+### Given a number of airports connections with the time duration between them find the route that pass through all airports in the shortest time possible (returns to the same airport are excluded).
 
-### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
+#### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
 
-### Example of 4 airports with 6 direct flight conections and their duration in hours
+**Example of 4 airports with 6 direct flight conections and their duration in hours**
 ```
 4 6
 ANK BCN 3
@@ -22,7 +22,7 @@ COS -- DTM ( 5 )
 time:  12
 ```
 
-#### Sample input
+**Another example input**
 
 ```
 5 7
@@ -35,7 +35,7 @@ OTP FRA 4
 FRA BER 2
 ```
 
-#### Output
+**Output**
 ```
 MAD -- XDT ( 2 )
 FRA -- BER ( 2 )
@@ -43,8 +43,7 @@ MAD -- OTP ( 3 )
 MAD -- FRA ( 4 )
 time:  11
 ```
-We can use Kruskal algorithm to find a graph minimum spanning tree. If the number of nodes in a graph is V, then each of its spanning trees should have (V-1) edges and contain no cycles.
-Kruskal steps:
+We can use **Kruskal algorithm** to find a graph minimum spanning tree. If the number of nodes in a graph is V, then each of its spanning trees should have (V-1) edges and contain no cycles. Kruskal STEPS:
 ```
 Initialize an empty edge set T 
 Sort all graph edges by the ascending order of their weight values
@@ -57,7 +56,7 @@ return T
 
 In js code:
 
-```
+```javascript
 let fs = require('fs'),
     readline = require('readline');
 
