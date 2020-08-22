@@ -2,7 +2,7 @@
 
 ##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
 
-Example of 4 airports with 6 direct flight conections and their duration in hours
+Example of 4 airports with 6 direct flight conections and their duration in hours:
 ```
 4 6
 ANK BCN 3
@@ -22,7 +22,7 @@ COS -- DTM ( 5 )
 time:  12
 ```
 
-Another example input
+Another input sample:
 
 ```
 5 7
@@ -35,7 +35,7 @@ OTP FRA 4
 FRA BER 2
 ```
 
-The Output
+Output:
 ```
 MAD -- XDT ( 2 )
 FRA -- BER ( 2 )
@@ -57,6 +57,8 @@ return T
 In js code:
 
 ```javascript
+'use strict';
+
 let fs = require('fs'),
     readline = require('readline');
 
@@ -98,6 +100,7 @@ class Graph {
       return this.nodes
     }
 
+    // get the root of node
     find(subsets, node) {
       let nodeInfo = subsets.get(node);
       if (nodeInfo.parent != node) {
@@ -107,17 +110,18 @@ class Graph {
       return nodeInfo.parent; 
     }
 
+    // unite the x and y subsets based on rank
     union(subsets, x, y) {
-        let xroot = this.find(subsets, x); 
-        let yroot = this.find(subsets, y); 
-  
+        let xroot = this.find(subsets, x);
+        let yroot = this.find(subsets, y);
+
         if (subsets.get(xroot).rank < subsets.get(yroot).rank) {
-            subsets.get(xroot).parent = yroot; 
+            subsets.get(xroot).parent = yroot;
         } else if (subsets.get(xroot).rank > subsets.get(yroot).rank) {
-          subsets.get(yroot).parent = xroot; 
+          subsets.get(yroot).parent = xroot;
         } else {
-          subsets.get(yroot).parent = xroot; 
-          subsets.get(xroot).rank++; 
+          subsets.get(yroot).parent = xroot;
+          subsets.get(xroot).rank++;
         }
     } 
 }
@@ -151,13 +155,15 @@ function kruskal(gNodes, gEdges, gFrom, gTo, gWeight) {
     i = 0;
     while(j < gNodes-1) {
       let edge = graph.getEdge(i++);
-      let v1 = graph.find(subsets, edge.v1); 
-      let v2 = graph.find(subsets, edge.v2);
+      let root1 = graph.find(subsets, edge.v1); 
+      let root2 = graph.find(subsets, edge.v2);
 
-      if (v1 != v2) {
+      // if the nodes doesn't create a cycle then we add the edge to final subgraph
+      if (root1 != root2) {
           result[j++] = edge;
+          // update the total weight of the subgraph
           cost += edge.w;
-          graph.union(subsets, v1, v2);
+          graph.union(subsets, root1, root2);
       }
     }
 
@@ -180,15 +186,15 @@ function readFile(fileName) {
       gWeight = [];
   
   fileStream.on('error', (err) => {
-    console.log('isssue: ', err.message)
+    console.log('file issue: ', err.message)
   });
       
   rl = readline.createInterface({
       input: fileStream
   });
+  // 'line' event - emitted whenever the input stream receives a new line \n
   rl.on('line', (line) => {
       data = line.split(' ');
-      console.log(data);
       if (index == 0) {
           gNodes = parseInt(data[0], 10);
           gEdges = parseInt(data[1], 10);
