@@ -2,6 +2,10 @@
 
 ##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
 
+![](https://github.com/girls-incode/graph-minimum-spaning-tree-MST-kruskal/blob/master/unidirected-weighted-graph.jpg "")
+
+![](https://https://github.com/girls-incode/graph-minimum-spaning-tree-MST-kruskal/blob/master/graph-minimum-spanning-tree-kruskal.jpg "")
+
 Example of 4 airports with 6 direct flight conections and their duration in hours:
 ```
 4 6
