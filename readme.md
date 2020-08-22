@@ -2,9 +2,28 @@
 
 ##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
 
+Example of 5 airports with 7 direct flight conections and their duration in hours:
+```
+5 7
+MAD XDT 2
+MAD OTP 3
+MAD FRA 4
+MAD BER 4
+XDT OTP 3
+OTP FRA 4
+FRA BER 2
+```
 ![](https://github.com/girls-incode/graph-minimum-spaning-tree-MST-kruskal/blob/master/unidirected-weighted-graph.jpg "")
 
-![](https://https://github.com/girls-incode/graph-minimum-spaning-tree-MST-kruskal/blob/master/graph-minimum-spanning-tree-kruskal.jpg "")
+The shortest route through all airports would take 11 hours:
+```
+MAD -- XDT ( 2 )
+FRA -- BER ( 2 )
+MAD -- OTP ( 3 )
+MAD -- FRA ( 4 )
+time:  11
+```
+![](https://github.com/girls-incode/graph-minimum-spaning-tree-MST-kruskal/blob/master/graph-minimum-spanning-tree-kruskal.jpg "")
 
 Example of 4 airports with 6 direct flight conections and their duration in hours:
 ```
@@ -26,27 +45,6 @@ COS -- DTM ( 5 )
 time:  12
 ```
 
-Another input sample:
-
-```
-5 7
-MAD XDT 2
-MAD OTP 3
-MAD FRA 4
-MAD BER 4
-XDT OTP 3
-OTP FRA 4
-FRA BER 2
-```
-
-Output:
-```
-MAD -- XDT ( 2 )
-FRA -- BER ( 2 )
-MAD -- OTP ( 3 )
-MAD -- FRA ( 4 )
-time:  11
-```
 We can use **Kruskal algorithm** to find a graph minimum spanning tree. If the number of nodes in a graph is V, then each of its spanning trees should have (V-1) edges and contain no cycles. Kruskal STEPS:
 ```
 Initialize an empty edge set T 
