@@ -1,6 +1,6 @@
 ### Given a number of airports connections with the time duration between them find the route that pass through all airports in the shortest time possible (returns to the same airport are excluded).
 
-##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. 
+The problem can be translated as: find the Minimum Spaning Tree (MST) in an undirected weighted connected graph. 
 > A MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and having the minimum sum of all edges weight among all such subgraphs.
 
 Example of 5 airports with 7 direct flight conections and their duration in hours:
