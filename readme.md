@@ -219,3 +219,4 @@ function readFile(fileName) {
 
 readFile('data1.txt');
 ```
+Read more articles like this on [Girlsincode](https://girlsincode.com/articles/)
