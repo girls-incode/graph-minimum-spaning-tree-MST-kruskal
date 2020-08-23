@@ -1,6 +1,7 @@
 ### Given a number of airports connections with the time duration between them find the route that pass through all airports in the shortest time possible (returns to the same airport are excluded).
 
-##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. The MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and has the minimum sum of all edges weight among all such subgraphs.
+##### The problem can be translated to: find the minimum spaning tree (MST) in an undirected weighted connected graph. 
+> A MST is a subgraph consisting of all the nodes in the graph with one exclusive path from a node to every other one (no cycles) and having the minimum sum of all edges weight among all such subgraphs.
 
 Example of 5 airports with 7 direct flight conections and their duration in hours:
 ```
@@ -45,7 +46,8 @@ COS -- DTM ( 5 )
 time:  12
 ```
 
-We can use **Kruskal algorithm** to find a graph minimum spanning tree. If the number of nodes in a graph is V, then each of its spanning trees should have (V-1) edges and contain no cycles. Kruskal STEPS:
+We can use **Kruskal algorithm** to find a graph minimum spanning tree. If the number of nodes in a graph is V, then each of its spanning trees should have (V-1) edges and contain no cycles. 
+Kruskal STEPS:
 ```
 Initialize an empty edge set T 
 Sort all graph edges by the ascending order of their weight values
@@ -56,7 +58,7 @@ Foreach edge in the sorted edge list
 return T
 ```
 
-In js code:
+The Node.js implementation:
 
 ```javascript
 'use strict';
